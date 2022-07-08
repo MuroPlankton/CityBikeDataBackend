@@ -2,19 +2,24 @@ package com.miroplanting.CityBikeDataBackend.trip;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.miroplanting.CityBikeDataBackend.station.Station;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "trips")
 public class Trip {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "id", nullable = false)
     private String id;
 
-    private Time departureTime, returnTime;
+    @Column(name = "departure_time")
+    private LocalDateTime departureTime;
+    @Column(name = "return_time")
+    private LocalDateTime returnTime;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "departure_station_id", nullable = false)
@@ -26,17 +31,21 @@ public class Trip {
     @JsonIgnore
     private Station returnStation;
 
-    int distanceMeters;
+    @Column(name = "distance_meters")
+    private int distanceMeters;
+
+    private int duration;
 
     public Trip() {
     }
 
-    public Trip(Time departureTime, Time returnTime, Station departureStation, Station returnStation, int distanceMeters) {
+    public Trip(LocalDateTime departureTime, LocalDateTime returnTime, Station departureStation, Station returnStation, int distanceMeters, int duration) {
         this.departureTime = departureTime;
         this.returnTime = returnTime;
         this.departureStation = departureStation;
         this.returnStation = returnStation;
         this.distanceMeters = distanceMeters;
+        this.duration = duration;
     }
 
     public Station getReturnStation() {
@@ -63,19 +72,19 @@ public class Trip {
         this.id = id;
     }
 
-    public Time getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Time departureTime) {
+    public void setDepartureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
     }
 
-    public Time getReturnTime() {
+    public LocalDateTime getReturnTime() {
         return returnTime;
     }
 
-    public void setReturnTime(Time returnTime) {
+    public void setReturnTime(LocalDateTime returnTime) {
         this.returnTime = returnTime;
     }
 
@@ -85,5 +94,13 @@ public class Trip {
 
     public void setDistanceMeters(int distanceMeters) {
         this.distanceMeters = distanceMeters;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }

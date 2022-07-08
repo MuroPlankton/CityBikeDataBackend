@@ -10,7 +10,7 @@ import java.util.List;
 public class Station {
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //name, address and city in Finnish
     private String nimi, osoite, kaupunki;
@@ -32,7 +32,7 @@ public class Station {
     }
 
     public Station(int id, String nimi, String osoite, String kaupunki, String namn, String adress, String stad,
-                   String operator, int capacity, double xCoordinate, double yCoordinate) {
+                   String operator, int capacity, double x, double y) {
         this.id = id;
         this.nimi = nimi;
         this.osoite = osoite;
@@ -42,8 +42,16 @@ public class Station {
         this.stad = stad;
         this.operator = operator;
         this.capacity = capacity;
-        this.x = xCoordinate;
-        this.y = yCoordinate;
+        this.x = x;
+        this.y = y;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNimi() {
@@ -124,13 +132,5 @@ public class Station {
 
     public void setY(double y) {
         this.y = y;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
