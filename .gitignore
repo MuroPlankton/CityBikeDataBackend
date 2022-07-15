@@ -55,3 +55,7 @@ build/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 CityBikeDataBackend/src/main/resources/application-local.properties
+CityBikeDataBackend/src/main/java/com/miroplanting/CityBikeDataBackend/csv/files/2021-07.csv
+CityBikeDataBackend/src/main/java/com/miroplanting/CityBikeDataBackend/csv/files/2021-06.csv
+CityBikeDataBackend/src/main/java/com/miroplanting/CityBikeDataBackend/csv/files/2021-05.csv
+CityBikeDataBackend/src/main/java/com/miroplanting/CityBikeDataBackend/csv/files/Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv

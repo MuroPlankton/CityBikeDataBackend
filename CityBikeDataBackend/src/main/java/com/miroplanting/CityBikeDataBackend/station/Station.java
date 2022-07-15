@@ -1,5 +1,6 @@
 package com.miroplanting.CityBikeDataBackend.station;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.miroplanting.CityBikeDataBackend.trip.Trip;
 
 import javax.persistence.*;
@@ -23,9 +24,11 @@ public class Station {
     private double x, y;
 
     @OneToMany(mappedBy = "departureStation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Trip> tripsDeparted;
 
     @OneToMany(mappedBy = "returnStation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Trip> tripsReturned;
 
     public Station() {

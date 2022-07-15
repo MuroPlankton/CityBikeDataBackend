@@ -21,14 +21,12 @@ public class Trip {
     @Column(name = "return_time")
     private LocalDateTime returnTime;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "departure_station_id", nullable = false)
-    @JsonIgnore
     private Station departureStation;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "return_station_id", nullable = false)
-    @JsonIgnore
     private Station returnStation;
 
     @Column(name = "distance_meters")
@@ -39,7 +37,8 @@ public class Trip {
     public Trip() {
     }
 
-    public Trip(LocalDateTime departureTime, LocalDateTime returnTime, Station departureStation, Station returnStation, int distanceMeters, int duration) {
+    public Trip(LocalDateTime departureTime, LocalDateTime returnTime, Station departureStation, Station returnStation,
+                int distanceMeters, int duration) {
         this.departureTime = departureTime;
         this.returnTime = returnTime;
         this.departureStation = departureStation;
