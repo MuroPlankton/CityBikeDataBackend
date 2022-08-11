@@ -25,15 +25,15 @@ public class CSVImportService {
         stationRepository.saveAll(StationImporter.ImportStationsFromCSV());
 
         Timer timer = new Timer();
-        timer.schedule(tripImporTask, 10000);
+        timer.schedule(tripImportTask, 10000);
 
     }
 
-    private TimerTask tripImporTask = new TimerTask() {
+    private TimerTask tripImportTask = new TimerTask() {
         @Override
         public void run() {
-            File csvFileFolder = new File(System.getProperty("user.dir") +
-                    "\\src\\main\\java\\com\\miroplanting\\CityBikeDataBackend\\csv\\files");
+            System.out.println(System.getProperty("user.dir"));
+            File csvFileFolder = new File(System.getProperty("user.dir") + "\\csvFiles");
             File[] csvFilesInFolder = csvFileFolder.listFiles();
 
             for (File file : csvFilesInFolder) {

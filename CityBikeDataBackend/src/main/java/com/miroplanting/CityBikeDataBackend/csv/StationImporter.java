@@ -15,8 +15,7 @@ public class StationImporter {
 
     public static List<Station> ImportStationsFromCSV() {
         File stationCSVFile = new File(System.getProperty("user.dir") +
-                "\\src\\main\\java\\com\\miroplanting\\CityBikeDataBackend\\csv\\files" +
-                "\\Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv");
+                "\\csvFiles\\Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv");
 
         List<Station> stations = new ArrayList<>();
         try {

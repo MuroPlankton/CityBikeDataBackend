@@ -27,13 +27,4 @@ public class TripRestController {
         trip.setReturnStation(stationRepository.findById(return_station).get());
         return tripRepository.save(trip);
     }
-
-    //TODO: list journeys preferably with pagination.
-    //ability to sort based on the value of a chosen column would be cool
-    //search functionality would also be cool
-    //and filtering
-
-    //TODO: add trip
-    //TODO: modify trip
-    //TODO: delete trip
 }
